@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วิทยาลัยเทคโนโลยีแดนสยาม - Dansiam Technological College</title>
+    <!-- Bootstrap 5 & FontAwesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Sarabun', sans-serif; background-color: #f8f9fa; }
+        .top-bar { background-color: #001f3f; color: white; padding: 8px 0; font-size: 0.85rem; }
+        .main-header { background: linear-gradient(135deg, #002b49 0%, #005a9c 100%); color: white; padding: 25px 0; border-bottom: 5px solid #d4af37; }
+        .navbar-gov { background-color: #001f3f; }
+        .navbar-gov .nav-link { color: white !important; font-weight: 500; margin-right: 15px; }
+        .navbar-gov .nav-link:hover { color: #d4af37 !important; }
+        .card-gov { border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); background-color: #ffffff; }
+        .footer-gov { background-color: #00152b; color: #b0c4de; padding: 30px 0 15px 0; }
+    </style>
+</head>
+<body>
+
+    <!-- แถบแจ้งเตือนบนสุด -->
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between">
+            <span><i class="fas fa-university me-2"></i>วิทยาลัยเทคโนโลยีแดนสยาม | Dansiam Technological College</span>
+            <span><i class="fas fa-phone me-1"></i> ระบบสารสนเทศฝ่ายวิชาการ</span>
+        </div>
+    </div>
+
+    <!-- ส่วนหัวเว็บไซต์ -->
+    <header class="main-header">
+        <div class="container d-flex align-items-center">
+            <i class="fas fa-graduation-cap fa-3x text-warning me-3"></i>
+            <div>
+                <h1 class="h3 fw-bold mb-0">วิทยาลัยเทคโนโลยีแดนสยาม</h1>
+                <small class="text-light">ศูนย์บันทึกข้อมูลและยื่นส่งงานสารสนเทศออนไลน์ภายในวิทยาลัย</small>
+            </div>
+        </div>
+    </header>
+
+    <!-- เมนูหลัก -->
+    <nav class="navbar navbar-expand-lg navbar-gov sticky-top">
+        <div class="container">
+            <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#academic"><i class="fas fa-book me-1"></i> ฝ่ายวิชาการ</a></li>
+                    <li class="nav-item"><a class="nav-link text-warning fw-bold" href="#submit-system"><i class="fas fa-file-upload me-1"></i> ระบบยื่นส่งงานออนไลน์</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner ต้อนรับ -->
+    <section class="py-4 bg-white text-center border-bottom">
+        <div class="container">
+            <h2 class="fw-bold text-primary mb-2">ระบบยื่นส่งงานและเอกสารสารสนเทศ</h2>
+            <p class="lead text-muted mb-0">วิทยาลัยเทคโนโลยีแดนสยาม รวมทุกแผนกวิชาและฝ่ายบริหารงานภายใน</p>
+        </div>
+    </section>
+
+    <!-- ส่วนฟอร์มยื่นส่งงาน -->
+    <section id="submit-system" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card card-gov">
+                        <div class="card-header bg-primary text-white p-3">
+                            <h5 class="card-title mb-0"><i class="fas fa-edit me-2"></i>แบบฟอร์มบันทึกการส่งงาน - วิทยาลัยเทคโนโลยีแดนสยาม</h5>
+                        </div>
+                        <div class="card-body p-4">
+                            <p class="text-muted">กรุณากรอกข้อมูลและแนบลิงก์งาน/เอกสาร เพื่อบันทึกเข้าสู่ฐานข้อมูลกลางของวิทยาลัย</p>
+                            
+                            <!-- ช่องสำหรับฝัง Google Form -->
+                            <div class="ratio ratio-16x9" style="min-height: 600px;">
+                                <iframe src="https://docs.google.com/forms" frameborder="0" marginheight="0" marginwidth="0">กำลังโหลดฟอร์ม...</iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ท้ายเว็บ -->
+    <footer class="footer-gov text-center">
+        <div class="container">
+            <p class="mb-1"><strong>วิทยาลัยเทคโนโลยีแดนสยาม (Dansiam Technological College)</strong></p>
+            <p class="small text-muted mb-0">© 2026 Dansiam Technological College. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
