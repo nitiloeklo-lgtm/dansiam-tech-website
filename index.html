@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบงานสารบรรณและรับ-ส่งหนังสือราชการดิจิทัล - วิทยาลัยเทคโนโลยีแดนสยาม</title>
+    <title>ระบบงานสารบรรณและคลังเอกสาร - วิทยาลัยเทคโนโลยีแดนสยาม</title>
     <!-- Bootstrap 5 & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,13 +12,15 @@
         .top-bar { background-color: #001f3f; color: white; padding: 8px 0; font-size: 0.85rem; }
         .main-header { background: linear-gradient(135deg, #002b49 0%, #005a9c 100%); color: white; padding: 25px 0; border-bottom: 5px solid #d4af37; }
         .navbar-gov { background-color: #001f3f; }
-        .navbar-gov .nav-link { color: white !important; font-weight: 500; margin-right: 15px; }
-        .navbar-gov .nav-link:hover, .navbar-gov .nav-link.active { color: #d4af37 !important; }
+        .navbar-gov .nav-link { color: white !important; font-weight: 500; padding: 12px 18px; cursor: pointer; }
+        .navbar-gov .nav-link:hover, .navbar-gov .nav-link.active { color: #d4af37 !important; background-color: rgba(255,255,255,0.08); }
         .card-gov { border: none; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); background-color: #ffffff; }
         .footer-gov { background-color: #00152b; color: #b0c4de; padding: 30px 0 15px 0; }
         .urgency-radio input[type="radio"]:checked + label.urgent-normal { background-color: #198754; color: white; }
         .urgency-radio input[type="radio"]:checked + label.urgent-medium { background-color: #fd7e14; color: white; }
         .urgency-radio input[type="radio"]:checked + label.urgent-high { background-color: #dc3545; color: white; }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
     </style>
 </head>
 <body>
@@ -27,7 +29,7 @@
     <div class="top-bar">
         <div class="container d-flex justify-content-between">
             <span><i class="fas fa-university me-2"></i>วิทยาลัยเทคโนโลยีแดนสยาม | Dansiam Technological College</span>
-            <span><i class="fas fa-file-contract me-1"></i> ระบบงานสารบรรณอิเล็กทรอนิกส์และลงนามรับหนังสือออนไลน์</span>
+            <span><i class="fas fa-shield-alt me-1"></i> ระบบสารสนเทศและลงนามรับหนังสือภายใน</span>
         </div>
     </div>
 
@@ -37,12 +39,12 @@
             <img src="https://graph.facebook.com/100090668705245/picture?type=large" alt="โลโก้วิทยาลัยเทคโนโลยีแดนสยาม" class="me-3 rounded-circle border border-2 border-warning bg-white" style="width: 65px; height: 65px; object-fit: cover;">
             <div>
                 <h1 class="h3 fw-bold mb-0">วิทยาลัยเทคโนโลยีแดนสยาม</h1>
-                <small class="text-light">ระบบรับ-ส่งหนังสือราชการ และลงชื่อรับทราบเอกสารอิเล็กทรอนิกส์ (E-Saraban System)</small>
+                <small class="text-light">ระบบศูนย์กลางงานสารบรรณ รับ-ส่งหนังสือราชการ และดาวน์โหลดแบบฟอร์ม</small>
             </div>
         </div>
     </header>
 
-    <!-- เมนูหลัก -->
+    <!-- เมนูหลักแถบระบบหลายหน้า -->
     <nav class="navbar navbar-expand-lg navbar-gov sticky-top">
         <div class="container">
             <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -50,8 +52,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#receive-system"><i class="fas fa-inbox me-1"></i> สมุดรับหนังสือราชการ / เวียนแจ้ง <span class="badge bg-danger rounded-pill ms-1">1</span></a></li>
-                    <li class="nav-item"><a class="nav-link text-warning fw-bold" href="#submit-system"><i class="fas fa-paper-plane me-1"></i> ส่งบันทึกข้อความ / เสนอเรื่อง</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" onclick="switchPage('home', this)"><i class="fas fa-home me-1"></i> หน้าแรก / ข่าวประชาสัมพันธ์</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-warning fw-bold" onclick="switchPage('receive', this)"><i class="fas fa-inbox me-1"></i> หนังสือรับเข้า / ลงชื่อรับทราบ <span class="badge bg-danger rounded-pill ms-1">1</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="switchPage('submit', this)"><i class="fas fa-paper-plane me-1"></i> ยื่นส่งบันทึกข้อความ / ออกเลข</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="switchPage('download', this)"><i class="fas fa-file-download me-1"></i> คลังดาวน์โหลดแบบฟอร์ม</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -59,16 +71,48 @@
 
     <div class="container py-5">
         
-        <!-- ================= ส่วนที่ 1: ทะเบียนรับหนังสือราชการ & ลงชื่อรับทราบ ================= -->
-        <section id="receive-system" class="mb-5">
+        <!-- ================= หน้าที่ 1: หน้าแรก / ข่าวประชาสัมพันธ์ ================= -->
+        <div id="page-home" class="page-section active">
+            <div class="row">
+                <div class="col-lg-8 mb-4">
+                    <div class="card card-gov p-4">
+                        <h4 class="fw-bold text-primary border-bottom pb-2 mb-3"><i class="fas fa-bullhorn me-2"></i> ข่าวประกาศประชาสัมพันธ์ประจำวิทยาลัย</h4>
+                        <div class="mb-3 p-3 bg-light rounded border-start border-4 border-primary">
+                            <h6 class="fw-bold mb-1">📢 แจ้งกำหนดการยื่นส่งแผนการจัดการเรียนรู้ ภาคเรียนปัจจุบัน</h6>
+                            <small class="text-muted">ประกาศเมื่อ: 21 ต.ค. 2026 | โดย: ฝ่ายวิชาการ</small>
+                            <p class="mb-0 mt-2">ขอให้หัวหน้าแผนกวิชาทุกแผนก ดำเนินการยื่นส่งแบบบันทึกข้อความและไฟล์แผนการจัดการเรียนรู้ผ่านระบบยื่นส่งเอกสารออนไลน์ภายในสัปดาห์นี้</p>
+                        </div>
+                        <div class="p-3 bg-light rounded border-start border-4 border-warning">
+                            <h6 class="fw-bold mb-1">📌 การใช้งานระบบลงชื่อรับหนังสือราชการดิจิทัล</h6>
+                            <small class="text-muted">ประกาศเมื่อ: 18 ต.ค. 2026 | โดย: งานสารบรรณกลาง</small>
+                            <p class="mb-0 mt-2">ครูและเจ้าหน้าที่สามารถเข้าไปที่เมนู "หนังสือรับเข้า" เพื่อตรวจสอบเอกสารเวียนและลงชื่อรับทราบแบบออนไลน์ได้ตลอด 24 ชั่วโมง</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-gov p-3 text-center mb-4">
+                        <h6 class="fw-bold text-dark"><i class="fas fa-clock text-warning me-1"></i> เวลาทำการงานสารบรรณ</h6>
+                        <hr class="my-2">
+                        <p class="small mb-1">จันทร์ - ศุกร์: 08:30 - 16:30 น.</p>
+                        <p class="small text-muted mb-0">ระบบออนไลน์เปิดรับตลอด 24 ชม.</p>
+                    </div>
+                    <div class="card card-gov p-3 bg-primary text-white text-center">
+                        <i class="fas fa-shield-alt fa-3x mb-2"></i>
+                        <h6>ระบบความปลอดภัย</h6>
+                        <small>รหัสผ่านการส่งงานพื้นฐาน: <b>dansiam1234</b></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= หน้าที่ 2: ทะเบียนหนังสือรับเข้า / ลงชื่อรับทราบ ================= -->
+        <div id="page-receive" class="page-section">
             <div class="card card-gov">
                 <div class="card-header bg-dark text-white p-3 d-flex justify-content-between align-items-center">
                     <h5 class="card-title mb-0"><i class="fas fa-envelope-open-text text-warning me-2"></i> ทะเบียนรับหนังสือราชการเข้า / เวียนแจ้งประจำแผนก</h5>
-                    <span class="badge bg-warning text-dark">ระบบรับหนังสือดิจิทัล</span>
+                    <span class="badge bg-warning text-dark">ระบบลงชื่อดิจิทัล</span>
                 </div>
                 <div class="card-body p-4">
-                    <p class="text-muted small mb-3"><i class="fas fa-info-circle me-1"></i> รายการหนังสือราชการที่เวียนถึงแผนกวิชา / ฝ่ายงาน กรุณากด "เปิดดู/ลงชื่อรับทราบ" เพื่อบันทึกหลักฐานการรับหนังสือ</p>
-                    
                     <div class="table-responsive">
                         <table class="table table-hover align-middle border">
                             <thead class="table-light">
@@ -77,14 +121,13 @@
                                     <th>เรื่อง / รายละเอียดหนังสือราชการ</th>
                                     <th style="width: 150px;">หน่วยงานที่ส่ง</th>
                                     <th style="width: 100px;">ความเร่งด่วน</th>
-                                    <th style="width: 140px;">สถานะการรับ</th>
+                                    <th style="width: 140px;">สถานะ</th>
                                     <th style="width: 150px;" class="text-center">ดำเนินการ</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- ตัวอย่างหนังสือราชการ 1 -->
                                 <tr>
-                                    <td><b class="text-primary">ศธ 0582/ว102</b><br><small class="text-muted">21 ต.ค. 2569</small></td>
+                                    <td><b class="text-primary">ศธ 0582/ว102</b><br><small class="text-muted">21 ต.ค. 2026</small></td>
                                     <td>
                                         <strong>ขอเชิญเข้าร่วมการประชุมจัดทำแผนการจัดการเรียนรู้ประจำภาคเรียน</strong><br>
                                         <small class="text-secondary">วัตถุประสงค์: เพื่อโปรดเข้าร่วมประชุมและแจ้งบุคลากรในสังกัดทราบ</small>
@@ -98,41 +141,21 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <!-- ตัวอย่างหนังสือราชการ 2 -->
-                                <tr>
-                                    <td><b class="text-primary">ศธ 0582/ว098</b><br><small class="text-muted">19 ต.ค. 2569</small></td>
-                                    <td>
-                                        <strong>แนวปฏิบัติตามมาตรการความปลอดภัยและตารางการเวรยามประจำสถานศึกษา</strong><br>
-                                        <small class="text-secondary">วัตถุประสงค์: เพื่อโปรดทราบและถือปฏิบัติ</small>
-                                    </td>
-                                    <td>ฝ่ายกิจการนักเรียน</td>
-                                    <td><span class="badge bg-success">ปกติ</span></td>
-                                    <td><span class="badge bg-success"><i class="fas fa-check-circle me-1"></i> รับทราบแล้ว</span><br><small class="text-muted" style="font-size:0.75rem;">รับเมื่อ: 19 ต.ค. 69 (14:30 น.)</small></td>
-                                    <td class="text-center">
-                                        <button class="btn btn-sm btn-light border text-muted" disabled>
-                                            <i class="fas fa-check me-1"></i> ลงชื่อแล้ว
-                                        </button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ================= ส่วนที่ 2: แบบฟอร์มส่งบันทึกข้อความ / เสนอเรื่อง ================= -->
-        <section id="submit-system">
+        <!-- ================= หน้าที่ 3: แบบฟอร์มยื่นส่งบันทึกข้อความ ================= -->
+        <div id="page-submit" class="page-section">
             <div class="card card-gov">
-                <div class="card-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+                <div class="card-header bg-primary text-white p-3">
                     <h5 class="card-title mb-0"><i class="fas fa-scroll me-2"></i> แบบฟอร์มเสนอเรื่อง / บันทึกข้อความออก (ส่งหนังสือ)</h5>
-                    <span class="badge bg-warning text-dark">ออกเลขหนังสืออัตโนมัติ</span>
                 </div>
                 <div class="card-body p-4">
-                    
                     <form id="submissionForm" onsubmit="submitForm(event)">
-                        
-                        <!-- ชั้นความเร็วเอกสาร -->
                         <div class="mb-4">
                             <label class="form-label fw-bold text-dark"><i class="fas fa-tachometer-alt me-1 text-primary"></i> ชั้นความเร็ว / ความเร่งด่วนของเอกสาร:</label>
                             <div class="row g-2 urgency-radio">
@@ -152,91 +175,117 @@
                         </div>
 
                         <div class="row">
-                            <!-- หน่วยงาน / แผนกผู้ส่ง -->
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold"><i class="fas fa-building me-1"></i> หน่วยงาน / แผนกวิชาเจ้าของเรื่อง (ผู้ส่ง):</label>
-                                <select class="form-select" id="departmentSelect" required>
+                                <label class="form-label fw-bold"><i class="fas fa-building me-1"></i> หน่วยงาน / แผนกวิชาผู้ส่ง:</label>
+                                <select class="form-select" required>
                                     <option value="" selected disabled>-- เลือกแผนกวิชา / ฝ่ายงาน --</option>
-                                    <optgroup label="ฝ่ายบริหารและฝ่ายสนับสนุน">
-                                        <option value="ฝ่ายบริหาร / ผู้อำนวยการ">ฝ่ายบริหาร / ผู้อำนวยการ</option>
-                                        <option value="ฝ่ายวิชาการ">ฝ่ายวิชาการ</option>
-                                        <option value="ฝ่ายกิจการนักเรียน นักศึกษา">ฝ่ายกิจการนักเรียน นักศึกษา</option>
-                                        <option value="ฝ่ายแผนงานและความร่วมมือ">ฝ่ายแผนงานและความร่วมมือ</option>
-                                        <option value="ฝ่ายบริหารทรัพยากร / งานบุคลากร">ฝ่ายบริหารทรัพยากร / งานบุคลากร</option>
-                                        <option value="งานการเงินและบัญชี">งานการเงินและบัญชี</option>
-                                        <option value="งานสารบรรณ / งานทะเบียนและวัดผล">งานสารบรรณ / งานทะเบียนและวัดผล</option>
-                                    </optgroup>
-                                    <optgroup label="แผนกวิชาการเรียนการสอน">
-                                        <option value="แผนกวิชาเทคโนโลยีสารสนเทศ / คอมพิวเตอร์">แผนกวิชาเทคโนโลยีสารสนเทศ / คอมพิวเตอร์</option>
-                                        <option value="แผนกวิชาช่างเทคนิคสถาปัตยกรรม">แผนกวิชาช่างเทคนิคสถาปัตยกรรม</option>
-                                        <option value="แผนกวิชาช่างยนต์ / เครื่องกล">แผนกวิชาช่างยนต์ / เครื่องกล</option>
-                                        <option value="แผนกวิชาช่างไฟฟ้ากำลัง">แผนกวิชาช่างไฟฟ้ากำลัง</option>
-                                        <option value="แผนกวิชาช่างอิเล็กทรอนิกส์">แผนกวิชาช่างอิเล็กทรอนิกส์</option>
-                                        <option value="แผนกวิชาการบัญชี">แผนกวิชาการบัญชี</option>
-                                        <option value="แผนกวิชาการตลาด / คอมพิวเตอร์ธุรกิจ">แผนกวิชาการตลาด / คอมพิวเตอร์ธุรกิจ</option>
-                                        <option value="หมวดวิชาทักษะชีวิต / สามัญสัมพันธ์">หมวดวิชาทักษะชีวิต / สามัญสัมพันธ์</option>
-                                    </optgroup>
+                                    <option value="ฝ่ายวิชาการ">ฝ่ายวิชาการ</option>
+                                    <option value="แผนกวิชาเทคโนโลยีสารสนเทศ">แผนกวิชาเทคโนโลยีสารสนเทศ / คอมพิวเตอร์</option>
+                                    <option value="แผนกวิชาการบัญชี">แผนกวิชาการบัญชี</option>
+                                    <option value="แผนกวิชาช่างยนต์">แผนกวิชาช่างยนต์</option>
+                                    <option value="แผนกวิชาช่างไฟฟ้ากำลัง">แผนกวิชาช่างไฟฟ้ากำลัง</option>
                                 </select>
                             </div>
-
-                            <!-- เสนอ / เรียน (ผู้รับ) -->
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold"><i class="fas fa-user-tie me-1"></i> เสนอ / เรียน (ผู้รับเอกสาร):</label>
-                                <select class="form-select" id="recipientSelect" required>
+                                <select class="form-select" required>
                                     <option value="" selected disabled>-- เลือกตำแหน่งผู้รับหนังสือ --</option>
                                     <option value="ผู้อำนวยการวิทยาลัยเทคโนโลยีแดนสยาม">ผู้อำนวยการวิทยาลัยเทคโนโลยีแดนสยาม</option>
                                     <option value="รองผู้อำนวยการฝ่ายวิชาการ">รองผู้อำนวยการฝ่ายวิชาการ</option>
-                                    <option value="รองผู้อำนวยการฝ่ายบริหารทรัพยากร">รองผู้อำนวยการฝ่ายบริหารทรัพยากร</option>
-                                    <option value="รองผู้อำนวยการฝ่ายกิจการนักเรียน นักศึกษา">รองผู้อำนวยการฝ่ายกิจการนักเรียน นักศึกษา</option>
-                                    <option value="หัวหน้างานสารบรรณกลาง">หัวหน้างานสารบรรณกลาง</option>
-                                    <option value="ทุกแผนกวิชา (เวียนแจ้ง)">ทุกแผนกวิชา (เวียนแจ้ง)</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <!-- เรื่อง (ชื่อบันทึกข้อความ) -->
-                            <div class="col-md-8 mb-3">
-                                <label class="form-label fw-bold"><i class="fas fa-heading me-1"></i> เรื่อง (ชื่อบันทึกข้อความ / ชื่อเรื่องที่ส่ง):</label>
-                                <input type="text" class="form-control" placeholder="เช่น ขออนุมัติจัดโครงการ..., รายงานผลการสอนประจำสัปดาห์..." required>
-                            </div>
-
-                            <!-- วัตถุประสงค์ -->
-                            <div class="col-md-4 mb-3">
-                                <label class="form-label fw-bold"><i class="fas fa-bullseye me-1"></i> วัตถุประสงค์การเสนอ:</label>
-                                <select class="form-select" required>
-                                    <option value="เพื่อโปรดทราบ">เพื่อโปรดทราบ</option>
-                                    <option value="เพื่อโปรดพิจารณา">เพื่อโปรดพิจารณา</option>
-                                    <option value="เพื่อโปรดอนุมัติ">เพื่อโปรดอนุมัติ</option>
-                                    <option value="เพื่อโปรดลงนาม">เพื่อโปรดลงนาม</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- สรุปเนื้อหา / ลิงก์ไฟล์เอกสาร -->
                         <div class="mb-3">
-                            <label class="form-label fw-bold"><i class="fas fa-paperclip me-1"></i> ลิงก์แนบไฟล์บันทึกข้อความ / ฉบับเต็ม (Google Drive / PDF):</label>
-                            <textarea class="form-control" id="docDetails" rows="3" placeholder="วางลิงก์ไฟล์ PDF บันทึกข้อความ หรือพิมพ์สรุปสาระสำคัญของเรื่อง..." required></textarea>
+                            <label class="form-label fw-bold"><i class="fas fa-heading me-1"></i> เรื่อง (ชื่อบันทึกข้อความ / ชื่อเรื่องที่ส่ง):</label>
+                            <input type="text" class="form-control" placeholder="เช่น ขออนุมัติจัดโครงการ..." required>
                         </div>
 
-                        <!-- รหัสผ่านยืนยันการส่งงาน -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-paperclip me-1"></i> ลิงก์แนบไฟล์บันทึกข้อความ (Google Drive / PDF):</label>
+                            <textarea class="form-control" rows="3" placeholder="วางลิงก์แนบไฟล์เอกสาร..." required></textarea>
+                        </div>
+
                         <div class="mb-4 p-3 bg-light rounded border">
-                            <label class="form-label fw-bold text-danger"><i class="fas fa-key me-1"></i> รหัสผ่านความปลอดภัยสารบรรณ (Security Password):</label>
-                            <input type="password" class="form-control" id="accessPassword" placeholder="กรอกรหัสผ่านประจำวิทยาลัยเพื่อออกเลขรับ-ส่ง" required>
-                            <small class="text-muted">* รหัสผ่านยืนยันสำหรับทดสอบระบบ: <b class="text-primary">dansiam1234</b></small>
+                            <label class="form-label fw-bold text-danger"><i class="fas fa-key me-1"></i> รหัสผ่านความปลอดภัย (Security Password):</label>
+                            <input type="password" class="form-control" id="accessPassword" placeholder="กรอกรหัส dansiam1234" required>
                         </div>
 
-                        <!-- ปุ่มกดส่ง -->
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm">
                                 <i class="fas fa-paper-plane me-2"></i> ออกเลข & ส่งบันทึกข้อความ
                             </button>
                         </div>
                     </form>
-
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- ================= หน้าที่ 4: คลังดาวน์โหลดแบบฟอร์มเอกสาร ================= -->
+        <div id="page-download" class="page-section">
+            <div class="card card-gov">
+                <div class="card-header bg-success text-white p-3">
+                    <h5 class="card-title mb-0"><i class="fas fa-file-download me-2"></i> คลังดาวน์โหลดแบบฟอร์มเอกสารราชการวิทยาลัย</h5>
+                </div>
+                <div class="card-body p-4">
+                    <p class="text-muted mb-4">ครูและเจ้าหน้าที่สามารถคลิกปุ่มดาวน์โหลดเพื่อนำแบบฟอร์มมาตรฐานของวิทยาลัยเทคโนโลยีแดนสยามไปใช้งานได้ทันที</p>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded d-flex align-items-center justify-content-between bg-light">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-file-word fa-2x text-primary me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">แบบฟอร์มบันทึกข้อความ (Word)</h6>
+                                        <small class="text-muted">ขนาด: 45 KB | แก้ไขล่าสุด: 2026</small>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="alert('ระบบกำลังจำลองการดาวน์โหลดไฟล์แบบฟอร์มบันทึกข้อความ')"><i class="fas fa-download me-1"></i> ดาวน์โหลด</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded d-flex align-items-center justify-content-between bg-light">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-file-pdf fa-2x text-danger me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">แบบฟอร์มเสนอขออนุมัติโครงการ</h6>
+                                        <small class="text-muted">ขนาด: 120 KB | งานแผนงาน</small>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-danger" onclick="alert('ระบบกำลังจำลองการดาวน์โหลดไฟล์แบบฟอร์มโครงการ')"><i class="fas fa-download me-1"></i> ดาวน์โหลด</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded d-flex align-items-center justify-content-between bg-light">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-file-excel fa-2x text-success me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">แบบฟอร์มตารางจัดการเรียนการสอน</h6>
+                                        <small class="text-muted">ขนาด: 85 KB | ฝ่ายวิชาการ</small>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-success" onclick="alert('ระบบกำลังจำลองการดาวน์โหลดไฟล์ตารางสอน')"><i class="fas fa-download me-1"></i> ดาวน์โหลด</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-3 border rounded d-flex align-items-center justify-content-between bg-light">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-file-alt fa-2x text-warning me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">แบบฟอร์มใบลาป่วย / ลากิจบุคลากร</h6>
+                                        <small class="text-muted">ขนาด: 50 KB | งานบุคลากร</small>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-warning text-dark" onclick="alert('ระบบกำลังจำลองการดาวน์โหลดแบบฟอร์มใบลา')"><i class="fas fa-download me-1"></i> ดาวน์โหลด</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
@@ -256,24 +305,15 @@
                     </div>
                     
                     <form id="signForm" onsubmit="confirmSignature(event)">
-                        <input type="hidden" id="activeDocId">
                         <h6 class="fw-bold text-primary mb-3"><i class="fas fa-pen-nib me-1"></i> บันทึกการลงชื่อรับทราบ (Digital Signature)</h6>
-                        
                         <div class="mb-3">
                             <label class="form-label fw-bold">ชื่อ-นามสกุล ผู้ลงชื่อรับทราบ:</label>
-                            <input type="text" class="form-control" placeholder="ระบุชื่อ-นามสกุล (เช่น นายสมชาย ใจดี)" required id="signerName">
+                            <input type="text" class="form-control" placeholder="ระบุชื่อ-นามสกุล" required id="signerName">
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">ตำแหน่ง / แผนกวิชา:</label>
-                            <input type="text" class="form-control" placeholder="เช่น หัวหน้าแผนกวิชาคอมพิวเตอร์" required id="signerRole">
-                        </div>
-
                         <div class="mb-3">
                             <label class="form-label fw-bold text-danger">รหัสผ่านยืนยันตัวตน (Security Password):</label>
-                            <input type="password" class="form-control" placeholder="กรอกรหัส dansiam1234 เพื่อยืนยัน" required id="signerPassword">
+                            <input type="password" class="form-control" placeholder="กรอกรหัส dansiam1234" required id="signerPassword">
                         </div>
-
                         <div class="text-end mt-4">
                             <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">ยกเลิก</button>
                             <button type="submit" class="btn btn-success"><i class="fas fa-check-circle me-1"></i> ยืนยันลงชื่อรับทราบ</button>
@@ -288,7 +328,7 @@
     <footer class="footer-gov text-center">
         <div class="container">
             <p class="mb-1"><strong>วิทยาลัยเทคโนโลยีแดนสยาม (Dansiam Technological College)</strong></p>
-            <p class="small text-muted mb-0">ระบบงานสารบรรณและลงนามเอกสารอิเล็กทรอนิกส์ประจำสถานศึกษา © 2026</p>
+            <p class="small text-muted mb-0">ระบบงานสารบรรณและคลังแบบฟอร์มเอกสารอิเล็กทรอนิกส์ประจำสถานศึกษา © 2026</p>
         </div>
     </footer>
 
@@ -299,11 +339,19 @@
             myDocModal = new bootstrap.Modal(document.getElementById('docModal'));
         });
 
+        // ฟังก์ชันสลับเมนู/สลับหน้าเว็บ
+        function switchPage(pageId, element) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => link.classList.remove('active'));
+            
+            document.getElementById('page-' + pageId).classList.add('active');
+            element.classList.add('active');
+        }
+
         function openDocModal(docNo, title, from, id) {
             document.getElementById('modalDocNo').innerText = docNo;
             document.getElementById('modalDocTitle').innerText = title;
             document.getElementById('modalDocFrom').innerText = from;
-            document.getElementById('activeDocId').value = id;
             myDocModal.show();
         }
 
@@ -313,18 +361,12 @@
             const name = document.getElementById('signerName').value;
             
             if(pass === 'dansiam1234') {
-                const now = new Date();
-                const timeStr = now.toLocaleDateString('th-TH') + ' (' + now.toLocaleTimeString('th-TH', {hour: '2-digit', minute:'2-digit'}) + ' น.)';
-                
-                alert('✅ ลงชื่อรับทราบหนังสือราชการเรียบร้อยแล้ว!\n\nผู้รับทราบ: ' + name + '\nเวลาลงชื่อ: ' + timeStr);
-                
-                // อัปเดตสถานะบนตาราง
+                alert('✅ ลงชื่อรับทราบหนังสือราชการเรียบร้อยแล้ว!\n\nผู้รับทราบ: ' + name);
                 document.getElementById('status-1').innerHTML = '<span class="badge bg-success"><i class="fas fa-check-circle me-1"></i> รับทราบแล้ว</span><br><small class="text-muted" style="font-size:0.75rem;">รับโดย: ' + name + '</small>';
-                
                 myDocModal.hide();
                 document.getElementById('signForm').reset();
             } else {
-                alert('❌ รหัสผ่านไม่ถูกต้อง! กรุณากรอกรหัสผ่านประจำวิทยาลัยอีกครั้ง');
+                alert('❌ รหัสผ่านไม่ถูกต้อง!');
             }
         }
 
@@ -334,12 +376,10 @@
             
             if (passwordInput === 'dansiam1234') {
                 const randomNum = Math.floor(1000 + Math.random() * 9000);
-                const currentYear = new Date().getFullYear() + 543;
-                
-                alert('✅ ยืนยันรหัสผ่านถูกต้อง!\n\nระบบทำการออกเลขรับบันทึกข้อความเรียบร้อยแล้ว\nเลขที่รับภายใน: ศธ/ดส.' + randomNum + '/' + currentYear);
+                alert('✅ ออกเลขรับบันทึกข้อความเรียบร้อยแล้ว\nเลขที่รับภายใน: ศธ/ดส.' + randomNum + '/2569');
                 document.getElementById('submissionForm').reset();
             } else {
-                alert('❌ รหัสผ่านไม่ถูกต้อง! กรุณาตรวจสอบรหัสผ่านประจำวิทยาลัยอีกครั้ง');
+                alert('❌ รหัสผ่านไม่ถูกต้อง!');
             }
         }
     </script>
