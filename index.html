@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>วิทยาลัยเทคโนโลยีแดนสยาม - Dansiam Technological College</title>
+    <title>ระบบสารบรรณและยื่นส่งเอกสารออนไลน์ - วิทยาลัยเทคโนโลยีแดนสยาม</title>
     <!-- Bootstrap 5 & FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Sarabun', sans-serif; background-color: #f8f9fa; }
+        body { font-family: 'Sarabun', sans-serif; background-color: #f4f6f9; }
         .top-bar { background-color: #001f3f; color: white; padding: 8px 0; font-size: 0.85rem; }
         .main-header { background: linear-gradient(135deg, #002b49 0%, #005a9c 100%); color: white; padding: 25px 0; border-bottom: 5px solid #d4af37; }
         .navbar-gov { background-color: #001f3f; }
@@ -19,6 +19,7 @@
         .urgency-radio input[type="radio"]:checked + label.urgent-normal { background-color: #198754; color: white; }
         .urgency-radio input[type="radio"]:checked + label.urgent-medium { background-color: #fd7e14; color: white; }
         .urgency-radio input[type="radio"]:checked + label.urgent-high { background-color: #dc3545; color: white; }
+        .header-doc { border-bottom: 2px dashed #ccc; padding-bottom: 10px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -27,7 +28,7 @@
     <div class="top-bar">
         <div class="container d-flex justify-content-between">
             <span><i class="fas fa-university me-2"></i>วิทยาลัยเทคโนโลยีแดนสยาม | Dansiam Technological College</span>
-            <span><i class="fas fa-lock me-1"></i> ระบบสารสนเทศและส่งงานภายในวิทยาลัย</span>
+            <span><i class="fas fa-file-contract me-1"></i> ระบบงานสารบรรณและบันทึกข้อความอิเล็กทรอนิกส์</span>
         </div>
     </div>
 
@@ -37,7 +38,7 @@
             <img src="https://graph.facebook.com/100090668705245/picture?type=large" alt="โลโก้วิทยาลัยเทคโนโลยีแดนสยาม" class="me-3 rounded-circle border border-2 border-warning bg-white" style="width: 65px; height: 65px; object-fit: cover;">
             <div>
                 <h1 class="h3 fw-bold mb-0">วิทยาลัยเทคโนโลยีแดนสยาม</h1>
-                <small class="text-light">ระบบบันทึกและยื่นส่งเอกสารสารสนเทศประจำแผนกวิชา / ฝ่ายงาน</small>
+                <small class="text-light">ระบบยื่นส่งบันทึกข้อความ และรับ-ส่งเอกสารราชการภายในสถานศึกษา</small>
             </div>
         </div>
     </header>
@@ -51,7 +52,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> หน้าแรก</a></li>
-                    <li class="nav-item"><a class="nav-link text-warning fw-bold" href="#submit-system"><i class="fas fa-file-upload me-1"></i> ระบบยื่นส่งงานประจำแผนก</a></li>
+                    <li class="nav-item"><a class="nav-link text-warning fw-bold" href="#submit-system"><i class="fas fa-file-signature me-1"></i> ยื่นส่งบันทึกข้อความ / เอกสาร</a></li>
                 </ul>
             </div>
         </div>
@@ -61,17 +62,19 @@
     <section id="submit-system" class="py-5">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-9">
+                <div class="col-lg-10">
                     <div class="card card-gov">
-                        <div class="card-header bg-primary text-white p-3">
-                            <h5 class="card-title mb-0"><i class="fas fa-paper-plane me-2"></i>แบบฟอร์มยื่นส่งงาน / เอกสารสารสนเทศ - วิทยาลัยเทคโนโลยีแดนสยาม</h5>
+                        <div class="card-header bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0"><i class="fas fa-scroll me-2"></i> แบบฟอร์มเสนอเรื่อง / บันทึกข้อความอิเล็กทรอนิกส์</h5>
+                            <span class="badge bg-warning text-dark">ระบบงานสารบรรณภายใน</span>
                         </div>
                         <div class="card-body p-4">
                             
                             <form id="submissionForm" onsubmit="submitForm(event)">
-                                <!-- เลือกความเร่งด่วน -->
+                                
+                                <!-- ชั้นความเร็วเอกสาร -->
                                 <div class="mb-4">
-                                    <label class="form-label fw-bold text-dark"><i class="fas fa-exclamation-circle text-warning me-1"></i> ระดับความเร่งด่วนในการส่งงาน:</label>
+                                    <label class="form-label fw-bold text-dark"><i class="fas fa-tachometer-alt me-1 text-primary"></i> ชั้นความเร็ว / ความเร่งด่วนของเอกสาร:</label>
                                     <div class="row g-2 urgency-radio">
                                         <div class="col-4">
                                             <input type="radio" class="btn-check" name="urgency" id="urg1" value="ปกติ" checked>
@@ -89,9 +92,9 @@
                                 </div>
 
                                 <div class="row">
-                                    <!-- เลือกแผนกวิชา / ฝ่ายงาน -->
+                                    <!-- หน่วยงาน / แผนกผู้ส่ง -->
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label fw-bold"><i class="fas fa-building me-1"></i> แผนกวิชา / ฝ่ายงานผู้ส่ง:</label>
+                                        <label class="form-label fw-bold"><i class="fas fa-building me-1"></i> หน่วยงาน / แผนกวิชาเจ้าของเรื่อง (ผู้ส่ง):</label>
                                         <select class="form-select" id="departmentSelect" required>
                                             <option value="" selected disabled>-- เลือกแผนกวิชา / ฝ่ายงาน --</option>
                                             <optgroup label="ฝ่ายบริหารและฝ่ายสนับสนุน">
@@ -101,7 +104,7 @@
                                                 <option value="ฝ่ายแผนงานและความร่วมมือ">ฝ่ายแผนงานและความร่วมมือ</option>
                                                 <option value="ฝ่ายบริหารทรัพยากร / งานบุคลากร">ฝ่ายบริหารทรัพยากร / งานบุคลากร</option>
                                                 <option value="งานการเงินและบัญชี">งานการเงินและบัญชี</option>
-                                                <option value="งานทะเบียนและวัดผล">งานทะเบียนและวัดผล</option>
+                                                <option value="งานสารบรรณ / งานทะเบียนและวัดผล">งานสารบรรณ / งานทะเบียนและวัดผล</option>
                                             </optgroup>
                                             <optgroup label="แผนกวิชาการเรียนการสอน">
                                                 <option value="แผนกวิชาเทคโนโลยีสารสนเทศ / คอมพิวเตอร์">แผนกวิชาเทคโนโลยีสารสนเทศ / คอมพิวเตอร์</option>
@@ -116,40 +119,57 @@
                                         </select>
                                     </div>
 
-                                    <!-- ประเภทเอกสารที่ส่ง -->
+                                    <!-- เสนอ / เรียน (ผู้รับ) -->
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label fw-bold"><i class="fas fa-folder me-1"></i> หัวข้อ / ประเภทเอกสารที่ส่ง:</label>
-                                        <select class="form-select" id="docTypeSelect" required>
-                                            <option value="" selected disabled>-- เลือกหัวข้อประเภทเอกสาร --</option>
-                                            <option value="แผนการจัดการเรียนรู้ / ตารางสอน">แผนการจัดการเรียนรู้ / ตารางสอน</option>
-                                            <option value="บันทึกหลังสอน / สรุปผลการสอนประจำสัปดาห์">บันทึกหลังสอน / สรุปผลการสอนประจำสัปดาห์</option>
-                                            <option value="โครงการ / รายงานสรุปผลกิจกรรม">โครงการ / รายงานสรุปผลกิจกรรมประจำแผนก</option>
-                                            <option value="ข้อสอบ / เอกสารการวัดและประเมินผล">ข้อสอบ / เอกสารการวัดและประเมินผล</option>
-                                            <option value="เอกสารวิจัย / ผลงาน/นวัตกรรมนักศึกษา">เอกสารวิจัย / ผลงาน/นวัตกรรมนักศึกษา</option>
-                                            <option value="บันทึกข้อความ / หนังสือส่งภายใน-ภายนอก">บันทึกข้อความ / หนังสือส่งภายใน-ภายนอก</option>
-                                            <option value="เอกสารประกอบการเบิกจ่าย / การเงิน">เอกสารประกอบการเบิกจ่าย / การเงิน</option>
-                                            <option value="เอกสารอื่นๆ">เอกสารอื่นๆ</option>
+                                        <label class="form-label fw-bold"><i class="fas fa-user-tie me-1"></i> เสนอ / เรียน (ผู้รับเอกสาร):</label>
+                                        <select class="form-select" id="recipientSelect" required>
+                                            <option value="" selected disabled>-- เลือกตำแหน่งผู้รับหนังสือ --</option>
+                                            <option value="ผู้อำนวยการวิทยาลัยเทคโนโลยีแดนสยาม">ผู้อำนวยการวิทยาลัยเทคโนโลยีแดนสยาม</option>
+                                            <option value="รองผู้อำนวยการฝ่ายวิชาการ">รองผู้อำนวยการฝ่ายวิชาการ</option>
+                                            <option value="รองผู้อำนวยการฝ่ายบริหารทรัพยากร">รองผู้อำนวยการฝ่ายบริหารทรัพยากร</option>
+                                            <option value="รองผู้อำนวยการฝ่ายกิจการนักเรียน นักศึกษา">รองผู้อำนวยการฝ่ายกิจการนักเรียน นักศึกษา</option>
+                                            <option value="หัวหน้างานสารบรรณกลาง">หัวหน้างานสารบรรณกลาง</option>
+                                            <option value="หัวหน้าแผนกวิชา">หัวหน้าแผนกวิชา</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <!-- รายละเอียดเพิ่มเติม / แนบไฟล์ -->
+                                <div class="row">
+                                    <!-- เรื่อง (ชื่อบันทึกข้อความ) -->
+                                    <div class="col-md-8 mb-3">
+                                        <label class="form-label fw-bold"><i class="fas fa-heading me-1"></i> เรื่อง (ชื่อบันทึกข้อความ / ชื่อเรื่องที่ส่ง):</label>
+                                        <input type="text" class="form-control" placeholder="เช่น ขออนุมัติจัดโครงการ..., รายงานผลการสอนประจำสัปดาห์..." required>
+                                    </div>
+
+                                    <!-- วัตถุประสงค์ -->
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label fw-bold"><i class="fas fa-bullseye me-1"></i> วัตถุประสงค์การเสนอ:</label>
+                                        <select class="form-select" required>
+                                            <option value="เพื่อโปรดทราบ">เพื่อโปรดทราบ</option>
+                                            <option value="เพื่อโปรดพิจารณา">เพื่อโปรดพิจารณา</option>
+                                            <option value="เพื่อโปรดอนุมัติ">เพื่อโปรดอนุมัติ</option>
+                                            <option value="เพื่อโปรดลงนาม">เพื่อโปรดลงนาม</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- สรุปเนื้อหา / ลิงก์ไฟล์เอกสาร -->
                                 <div class="mb-3">
-                                    <label class="form-label fw-bold"><i class="fas fa-link me-1"></i> ลิงก์แนบไฟล์งาน / รายละเอียดงาน (Google Drive / OneDrive):</label>
-                                    <textarea class="form-control" id="docDetails" rows="3" placeholder="วางลิงก์แนบไฟล์เอกสาร หรือพิมพ์รายละเอียดงานเพิ่มเติม..." required></textarea>
+                                    <label class="form-label fw-bold"><i class="fas fa-paperclip me-1"></i> ลิงก์แนบไฟล์บันทึกข้อความ / ฉบับเต็ม (Google Drive / PDF):</label>
+                                    <textarea class="form-control" id="docDetails" rows="3" placeholder="วางลิงก์ไฟล์ PDF บันทึกข้อความ หรือพิมพ์สรุปสาระสำคัญของเรื่อง..." required></textarea>
                                 </div>
 
                                 <!-- รหัสผ่านยืนยันการส่งงาน -->
                                 <div class="mb-4 p-3 bg-light rounded border">
-                                    <label class="form-label fw-bold text-danger"><i class="fas fa-key me-1"></i> รหัสผ่านเข้าใช้งาน (Security Password):</label>
-                                    <input type="password" class="form-control" id="accessPassword" placeholder="กรอกรหัสผ่านประจำวิทยาลัยเพื่อยืนยันการส่งงาน" required>
-                                    <small class="text-muted">* รหัสผ่านยืนยันสำหรับทดสอบ: <b class="text-primary">dansiam1234</b></small>
+                                    <label class="form-label fw-bold text-danger"><i class="fas fa-key me-1"></i> รหัสผ่านความปลอดภัยสารบรรณ (Security Password):</label>
+                                    <input type="password" class="form-control" id="accessPassword" placeholder="กรอกรหัสผ่านประจำวิทยาลัยเพื่อออกเลขรับ-ส่ง" required>
+                                    <small class="text-muted">* รหัสผ่านยืนยันสำหรับทดสอบระบบ: <b class="text-primary">dansiam1234</b></small>
                                 </div>
 
                                 <!-- ปุ่มกดส่ง -->
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary btn-lg px-5 shadow-sm">
-                                        <i class="fas fa-paper-plane me-2"></i> ยืนยันบันทึกยื่นส่งงาน
+                                        <i class="fas fa-paper-plane me-2"></i> ส่งบันทึกข้อความเข้าสู่ระบบ
                                     </button>
                                 </div>
                             </form>
@@ -165,7 +185,7 @@
     <footer class="footer-gov text-center">
         <div class="container">
             <p class="mb-1"><strong>วิทยาลัยเทคโนโลยีแดนสยาม (Dansiam Technological College)</strong></p>
-            <p class="small text-muted mb-0">© 2026 Dansiam Technological College. All Rights Reserved.</p>
+            <p class="small text-muted mb-0">งานสารบรรณและระบบสารสนเทศเพื่อการบริหารจัดการสถานศึกษา © 2026</p>
         </div>
     </footer>
 
@@ -176,7 +196,11 @@
             const passwordInput = document.getElementById('accessPassword').value;
             
             if (passwordInput === 'dansiam1234') {
-                alert('✅ ยืนยันรหัสผ่านถูกต้อง! บันทึกข้อมูลการยื่นส่งงานเรียบร้อยแล้ว');
+                // สุ่มเลขที่รับหนังสือแบบระบบสารบรรณราชการ
+                const randomNum = Math.floor(1000 + Math.random() * 9000);
+                const currentYear = new Date().getFullYear() + 543;
+                
+                alert('✅ ยืนยันรหัสผ่านถูกต้อง!\n\nระบบทำการออกเลขรับบันทึกข้อความเรียบร้อยแล้ว\nเลขที่รับภายใน: ศธ/ดส.' + randomNum + '/' + currentYear);
                 document.getElementById('submissionForm').reset();
             } else {
                 alert('❌ รหัสผ่านไม่ถูกต้อง! กรุณาตรวจสอบรหัสผ่านประจำวิทยาลัยอีกครั้ง');
