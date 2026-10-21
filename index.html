@@ -34,7 +34,7 @@
     <!-- ส่วนหัวเว็บไซต์ -->
     <header class="main-header">
         <div class="container d-flex align-items-center">
-            <img src="https://scontent.fbkk22-2.fna.fbcdn.net/v/t39.30808-6/331393664_1180206145952003_3887550505191630137_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=your_token&_nc_zt=23&_nc_ht=scontent.fbkk22-2.fna" alt="โลโก้วิทยาลัยเทคโนโลยีแดนสยาม" class="me-3 rounded-circle border border-2 border-warning" style="width: 65px; height: 65px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/65?text=วิทยาลัย'">
+            <img src="https://graph.facebook.com/100090668705245/picture?type=large" alt="โลโก้วิทยาลัยเทคโนโลยีแดนสยาม" class="me-3 rounded-circle border border-2 border-warning bg-white" style="width: 65px; height: 65px; object-fit: cover;">
             <div>
                 <h1 class="h3 fw-bold mb-0">วิทยาลัยเทคโนโลยีแดนสยาม</h1>
                 <small class="text-light">ระบบบันทึกและยื่นส่งเอกสารสารสนเทศประจำแผนกวิชา / ฝ่ายงาน</small>
@@ -175,7 +175,6 @@
             event.preventDefault();
             const passwordInput = document.getElementById('accessPassword').value;
             
-            // ตรวจสอบรหัสผ่าน (สามารถแก้ไขคำว่า 'dansiam1234' เป็นรหัสที่ต้องการได้)
             if (passwordInput === 'dansiam1234') {
                 alert('✅ ยืนยันรหัสผ่านถูกต้อง! บันทึกข้อมูลการยื่นส่งงานเรียบร้อยแล้ว');
                 document.getElementById('submissionForm').reset();
